@@ -3,3 +3,4 @@ bulma.sass
 css/.sass-cache
 css/*.scss
 *.map
+deploy/

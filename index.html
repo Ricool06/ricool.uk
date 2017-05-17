@@ -13,15 +13,40 @@
         <!-- Links -->
         <link href="https://fonts.googleapis.com/css?family=Roboto|Slabo+27px" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
+        <script src="js/ui.js"></script>
+        <link rel="icon" type="image/svg" href="img/liontraceroar.svg">
     </head>
 
     <body>
         <!-- Hero Banner -->
         <section class="hero is-fullheight is-primary is-bold">
+
+            <!-- Mobile nav menu (burger menu) -->
+            <div class="hero-head">
+                <nav class="nav nav-right is-hidden-tablet">
+                    <span id="nav-toggle" class="nav-toggle"><!--Add the is-active class to toggle the menu "icon" between an x and a burger -->
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+
+                    <!--<div class="nav-right nav-menu is-active">
+                        <a class="nav-item is-tab is-hidden-tablet is-active">Blog</a>
+                        <a class="nav-item is-tab is-hidden-tablet">Projects</a>
+                    </div>-->
+                </nav>
+            </div>
+
+            <aside class="menu is-hidden-tablet">
+                <ul class="menu-list">
+                    <li><a class="subtitle is-4">Blog</a></li>
+                    <li><a class="subtitle is-4">Projects</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main hero image and title content -->
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <!-- Use columns to shrink image -->
-
                     <div class="circle">
                         <figure class="image is-square">
                             <img src="img/liontraceroar.svg">
@@ -32,10 +57,22 @@
                     <h5 class="subtitle is-5">Programmer, student, and probably drinking tea.</h5>
                 </div>
             </div>
+
+            <!-- Desktop & tablet nav bar at bottom -->
+            <div class="hero-foot is-hidden-mobile">
+                <nav class="nav-menu">
+                    <div class="container">
+                        <div class="nav-center">
+                            <div class="nav-item">
+                                <a class="nav-item is-tab is-active">Blog</a>
+                                <a class="nav-item is-tab">Projects</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
         </section>
-
-        <nav class="nav-menu has-shadow">
-
         </div>
     </body>
 
