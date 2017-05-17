@@ -27,6 +27,12 @@
   bottom: 0;
   top: 3.25rem; }
 
+.nav-menu-item {
+  display: block;
+  word-wrap: nowrap;
+  white-space: nowrap;
+  text-decoration: none; }
+
 /*! bulma.io v0.4.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
