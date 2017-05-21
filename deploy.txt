@@ -1,0 +1,7 @@
+index.php
+css\main.css
+img
+js
+blog
+projects
+api

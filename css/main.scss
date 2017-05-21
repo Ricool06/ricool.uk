@@ -40,10 +40,8 @@ $family-primary: "Slabo 27px", serif;
 }
 
 .nav-menu-item {
-	display: block;
-	word-wrap: nowrap;
 	white-space: nowrap;
-	text-decoration: none;
+    user-select: none;
 }
 
 @import "../bulma";

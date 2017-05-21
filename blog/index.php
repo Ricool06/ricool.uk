@@ -14,6 +14,10 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto|Slabo+27px" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
         <link rel="icon" type="image/svg" href="img/liontraceroar.svg">
+
+        <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+
     </head>
 
     <body>
@@ -41,6 +45,7 @@
                 <ul class="menu-list">
                     <li><a class="nav-menu-item subtitle is-3">Blog</a></li>
                     <li><a class="nav-menu-item subtitle is-3">Projects</a></li>
+                    <li><a class="nav-menu-item subtitle is-3">Login</a></li>
                 </ul>
             </aside>
 
@@ -66,6 +71,7 @@
                             <div class="nav-item">
                                 <a class="nav-item is-tab is-active">Blog</a>
                                 <a class="nav-item is-tab">Projects</a>
+                                <a class="nav-item is-tab">Login</a>
                             </div>
                         </div>
                     </div>
