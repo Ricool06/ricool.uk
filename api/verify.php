@@ -1,32 +1,33 @@
 <?php
     function verify($splitToken){
-        //Decode payload
+        //Decode payload.
         $payload = json_decode(base64_decode($splitToken[1]), true);
 
-        //Sanitize input
+        //Sanitize input.
         $user = filter_var($payload['user'], FILTER_SANITIZE_STRING);
         $user = SQLite3::escapeString($user);
 
-        //Prepare query
+        //Prepare query.
         $db = new SQLite3($_SERVER['DOCUMENT_ROOT'] . '/../ricool.uk.db');
         $query = $db->prepare('SELECT * FROM users WHERE user = :user');
         $query->bindValue(':user', $user);
 
-        //Get record from DB
+        //Get record from DB.
         $result = $query->execute();
         $row = $result->fetchArray();
 
         //Create the header and payload combination from the given token.
         $headerPayload = $splitToken[0] . '.' . $splitToken[1];
 
-        //Generate the signature from the given token, and the true secret from the DB
+        //Generate the signature from the given token, and the true secret from the DB.
         $secret = $row[3];
         $generatedSignature = hash_hmac('sha256', $headerPayload, $secret);
 
         //Get the attached signature.
         $attachedSignature = $splitToken[2];
 
-        if(strcmp($generatedSignature, $attachedSignature) == 0){
+        //If the signature is valid, and the token not expired, accept, reject otherwise.
+        if(strcmp($generatedSignature, $attachedSignature) == 0 || $payload['exp'] < time()){
             accepted();
         } else {
             unauthorized();
