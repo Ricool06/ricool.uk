@@ -85,9 +85,18 @@
         var_dump(http_response_code());
     }
 
+    function internalServerError(){
+        http_response_code(500);
+        var_dump(http_response_code());
+    }
+
     //If the correct post request was received, proceed with login.
     if(isset($_POST["user"], $_POST["password"])){
-        login();
+        try {
+            login();
+        } catch (Exception $e) {
+            internalServerError();
+        }
     } else {
         unauthorized();
     }

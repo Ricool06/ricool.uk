@@ -21,10 +21,23 @@
         var_dump(http_response_code());
     }
 
-    if(isset($_POST["user"], $_POST["password"])){
-        register();
-    } else {
-        http_response_code(400);
+    function unauthorized(){
+        http_response_code(401);
         var_dump(http_response_code());
+    }
+
+    function internalServerError(){
+        http_response_code(500);
+        var_dump(http_response_code());
+    }
+
+    if(isset($_POST["user"], $_POST["password"])){
+        try {
+            register();
+        } catch (Exception $e) {
+            internalServerError();
+        }
+    } else {
+        unauthorized();
     }
  ?>
