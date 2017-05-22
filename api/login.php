@@ -1,5 +1,5 @@
 <?php
-    function returnJWT($row){
+    function returnJWT($db, $row){
         //Generate secret (crypto secure).
         $secret = random_bytes(128);
 
@@ -11,7 +11,7 @@
         //Construct header.
         $jwtHeader = base64_encode(json_encode(array(
             'alg' => 'HS256',
-            'typ' => 'jwt'
+            'typ' => 'JWT'
         )));
 
         //Construct payload.
@@ -33,10 +33,10 @@
         //Execute the query to add the secret for this token to the database.
         $query->execute();
 
-        var_dump($jwtSignature);
+        var_dump($jwt);
     }
 
-    function getCredentials($db){
+    function getCredentials($db, $user){
         //Look up credentials
         $query = $db->prepare('SELECT * FROM users WHERE user = :user');
         $query->bindValue(':user', $user);
@@ -46,12 +46,16 @@
         return $result;
     }
 
-    function compareCredentials($row)
+    function compareCredentials($row, $password)
     {
         //Compare credentials
         $hash = $row[1];
+        //var_dump($row);
+        //var_dump($password);
 
         $success = password_verify($password, $hash);
+
+        return $success;
     }
 
     function login(){
@@ -64,13 +68,13 @@
         $user = SQLite3::escapeString($user);
         $password = SQLite3::escapeString($password);
 
-        $result = getCredentials($db);
+        $result = getCredentials($db, $user);
         $row = $result->fetchArray();
 
-        $success = compareCredentials($row);
+        $success = compareCredentials($row, $password);
 
         if($success){
-            returnJWT($row);
+            returnJWT($db, $row);
         } else {
             unauthorized();
         }
