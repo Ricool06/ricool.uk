@@ -1,8 +1,9 @@
 <?php
     require_once('verify.php');
 
-    function createPost(){
-        $splitToken = getSplitToken();
+    function createPost($headers){
+        $authHeader = explode(' ', $headers['Authorization']);
+        $splitToken = getSplitToken($authHeader);
         //Decode payload.
         $payload = json_decode(base64_decode($splitToken[1]), true);
         $role = filter_var($payload['role'], FILTER_SANITIZE_STRING);
@@ -38,7 +39,7 @@
         $authorized = verifyAuthHeader($headers);
 
         if($authorized){
-            createPost();
+            createPost($headers);
         } else {
             unauthorized();
         }

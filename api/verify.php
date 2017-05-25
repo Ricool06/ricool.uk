@@ -37,7 +37,8 @@
     }
 
     function verifyAuthHeader($headers){
-        $splitToken = getSplitToken();
+        $authHeader = explode(' ', $headers['Authorization']);
+        $splitToken = getSplitToken($authHeader);
 
         try {
             return verify($splitToken);
@@ -46,8 +47,8 @@
         }
     }
 
-    function getSplitToken(){
-        $authHeader = explode(' ', $headers['Authorization']);
+    function getSplitToken($authHeader){
+
 
         $scheme = $authHeader[0];
         $token = $authHeader[1];
