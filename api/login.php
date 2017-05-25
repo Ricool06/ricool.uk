@@ -18,7 +18,7 @@
         $jwtPayload = base64_encode(json_encode(array(
             'user' => $row[0], //User ID.
             'role' => $row[2], //Role.
-            'iss' => $_SERVER[HTTP_HOST],
+            'iss' => $_SERVER['HTTP_HOST'],
             'iat' => time(),
             'exp' => time() + (24 * 60 * 60) //Expires in a day.
         )));
@@ -32,7 +32,7 @@
 
         //Execute the query to add the secret for this token to the database.
         $query->execute();
-
+        header('Authorization: Bearer ' . $jwt);
         var_dump($jwt);
     }
 

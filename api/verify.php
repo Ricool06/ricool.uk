@@ -28,25 +28,41 @@
 
         //If the signature is valid, and the token not expired, accept, reject otherwise.
         if(strcmp($generatedSignature, $attachedSignature) == 0 || $payload['exp'] < time()){
-            accepted();
+            //accepted();
+            return true;
         } else {
-            unauthorized();
+            //unauthorized();
+            return false;
         }
     }
 
-    function extractHeaders($headers){
+    function verifyAuthHeader($headers){
+        $splitToken = getSplitToken();
+
+        try {
+            return verify($splitToken);
+        } catch (Exception $e) {
+            internalServerError();
+        }
+    }
+
+    function getSplitToken(){
         $authHeader = explode(' ', $headers['Authorization']);
 
         $scheme = $authHeader[0];
         $token = $authHeader[1];
 
-        $splitToken = explode('.', $token);
+        return explode('.', $token);
+    }
 
-        try {
-            verify($splitToken);
-        } catch (Exception $e) {
-            internalServerError;
-        }
+    function ok(){
+        http_response_code(200);
+        var_dump(http_response_code());
+    }
+
+    function created(){
+        http_response_code(201);
+        var_dump(http_response_code());
     }
 
     function accepted(){
@@ -64,10 +80,12 @@
         var_dump(http_response_code());
     }
 
+    /*
     $headers = getallheaders();
     try {
         extractHeaders($headers);
     } catch (Exception $e) {
         internalServerError();
     }
+    */
  ?>

@@ -1,3 +1,4 @@
 <?php
-    header('Location: /blog/'); 
- ?>
+    header('Location: /blog/');
+    exit;
+?>
