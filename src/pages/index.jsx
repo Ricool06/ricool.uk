@@ -1,19 +1,56 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
+import PostLink from '../components/post-link';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
-    </div>
-  </Layout>
-);
+export default function IndexPage({ data: { allMarkdownRemark: { edges } } }) {
+  const PostLinks = edges.map(edge => <PostLink key={edge.node.id} post={edge.node} />);
 
-export default IndexPage;
+  return (
+    <Layout>
+      <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+      <div>{PostLinks}</div>
+    </Layout>
+  );
+}
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            excerpt: PropTypes.string.isRequired,
+            frontmatter: PropTypes.shape({
+              path: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              title: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+          }
+        }
+      }
+    }
+  }
+`;
