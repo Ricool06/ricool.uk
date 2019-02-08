@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- node
+cache:
+- npm
+script:
+- npm run test
+- npm run lint
+- npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_PAGES_DEPLOY_TOKEN
+  keep-history: true
+  repo: Ricool06/ricool06.github.io
+  target-branch: master
+  local-dir: public
+  on:
+    branch: master

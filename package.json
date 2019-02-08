@@ -29,7 +29,7 @@
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "jest",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "manual-deploy": "gatsby build && gh-pages -d public -b master -r 'https://github.com/Ricool06/Ricool06.github.io.git'",
     "lint": "eslint ./"
   },
   "devDependencies": {
@@ -42,6 +42,7 @@
     "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-react": "^7.12.4",
+    "gh-pages": "^2.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.0.0",
     "prettier": "^1.15.2",
