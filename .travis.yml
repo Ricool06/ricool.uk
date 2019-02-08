@@ -7,6 +7,8 @@ script:
 - npm run test
 - npm run lint
 - npm run build
+before_deploy:
+- cp CNAME public
 deploy:
   provider: pages
   skip-cleanup: true
