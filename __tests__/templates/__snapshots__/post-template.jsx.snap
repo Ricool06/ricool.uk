@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostTemplate should have a correctly configured StaticQuery component for default export 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "background": "#339988",
+        "marginBottom": "1.45rem",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+          "maxWidth": 960,
+          "padding": "1.45rem 1.0875rem",
+        }
+      }
+    >
+      <h1
+        style={
+          Object {
+            "margin": 0,
+          }
+        }
+      >
+        <a
+          href="/"
+          style={
+            Object {
+              "color": "white",
+              "textDecoration": "none",
+            }
+          }
+        >
+          Ricool's Blog
+        </a>
+      </h1>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "margin": "0 auto",
+        "maxWidth": 960,
+        "padding": "0px 1.0875rem 1.45rem",
+        "paddingTop": 0,
+      }
+    }
+  >
+    <div
+      className="blog-post-container"
+    >
+      <div
+        className="blog-post"
+      >
+        <h1>
+          My First Blog Post
+        </h1>
+        <h2>
+          2019-26-01
+        </h2>
+        <div
+          className="blog-post-content"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+        />
+      </div>
+    </div>
+    <footer>
+      ©
+      2019
+      , Built with
+       
+      <a
+        href="https://www.gatsbyjs.org"
+      >
+        Gatsby
+      </a>
+    </footer>
+  </div>,
+]
+`;
