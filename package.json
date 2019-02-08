@@ -1,0 +1,60 @@
+{
+  "name": "ricool.uk",
+  "private": true,
+  "description": "Ricool's site made with Gatsby",
+  "version": "0.1.0",
+  "author": "Ricool06",
+  "dependencies": {
+    "gatsby": "^2.0.98",
+    "gatsby-image": "^2.0.20",
+    "gatsby-plugin-manifest": "^2.0.9",
+    "gatsby-plugin-offline": "^2.0.16",
+    "gatsby-plugin-react-helmet": "^3.0.2",
+    "gatsby-plugin-sharp": "^2.0.14",
+    "gatsby-source-filesystem": "^2.0.17",
+    "gatsby-transformer-remark": "^2.2.0",
+    "gatsby-transformer-sharp": "^2.1.8",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-helmet": "^5.2.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "jest",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "lint": "eslint ./"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.0.0",
+    "babel-preset-gatsby": "^0.1.6",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.0.0",
+    "prettier": "^1.15.2",
+    "react-test-renderer": "^16.7.0",
+    "react-testing-library": "^5.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ricool06/ricool.uk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ricool06/ricool.uk/issues"
+  },
+  "homepage": "https://ricool.uk",
+  "main": "gatsby-browser.js"
+}
