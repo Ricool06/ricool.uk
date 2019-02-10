@@ -33,7 +33,8 @@
     "format": "prettier --write \"src/**/*.js\"",
     "test": "jest",
     "manual-deploy": "gatsby build && gh-pages -d public -b master -r 'https://github.com/Ricool06/Ricool06.github.io.git'",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "spellcheck": "mdspell --report --en-gb --ignore-acronyms --ignore-numbers 'posts/**/*.md'"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -49,6 +50,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.0.0",
     "jest-dom": "^3.0.2",
+    "markdown-spellcheck": "^1.3.1",
     "prettier": "^1.15.2",
     "react-test-renderer": "^16.7.0",
     "react-testing-library": "^5.4.4"
