@@ -3,9 +3,9 @@ path: "/work-based-learning-week-1"
 date: "2019-02-10"
 title: "Work based learning: Week 1"
 ---
-It feels good to be back at work. Since completing my placement as a software engineer, I have continued my studies at university. As much as the relaxed atmosphere of home working can be a welcome break after a hectic year of beginning my career as a software engineer, moving house twice, losing my motorcycle, and travelling around Europe, I always find myself itching to get back at it.
+It feels good to be back at work. Since completing my placement as a software engineer, I have continued my studies at university. As much as the relaxed atmosphere of home working can be a welcome break after a hectic year of moving house twice, losing my motorcycle, and travelling around Europe, I always find myself itching to get back at it.
 
-I'm currently taking a module, "Work Based Learning", where I document my experiences as a software engineer over 100 hours of industry placement. The idea is to show the ability to self-reflect, solve problems practically, act professionally within the law, and communicate effectively. And so, this post begins a series that should demonstrate my technical, interpersonal, and professional acumen. And if it doesn't, at least you, _the reader_, might be entertained by my attempts at writing English instead of Javascript for a change.
+I'm currently taking a module, "Work Based Learning", where I document my experiences over 100 hours of industry placement. The idea is to show the ability to self-reflect, solve problems practically, act professionally within the law, and communicate effectively. And so, this post begins a series that should demonstrate my technical, interpersonal, and professional acumen. And if it doesn't, at least you, _the reader_, might be entertained by my attempts at writing English instead of Javascript for a change.
 
 ### What I did this week
 
