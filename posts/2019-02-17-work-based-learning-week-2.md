@@ -17,4 +17,6 @@ Our team had a short Skype meeting to catch up on the previous week's events. In
 Fortunately, by the end of the meeting, everyone was in agreement. We would spend the next couple of days wrapping up the exploration of this tool in preparation to move onto the next. For the rest of the day, we filled in the feature comparison matrix by examining our POCs and the samples on the GoJS website in order to provide evidence for our conclusion that we would present the next day.
 
 #### Day 2
-The time of the presentation approached. Despite the fairly extensive documentation we had compiled, the affair was a casual one. We worked our way down the table of required features and notes about their implementation. On
+The time of the presentation approached. Despite the fairly extensive documentation we had prepared, the affair was a casual one. We worked our way down the table of required features and explained our implementation. As the senior developer asked us questions about our POCs, I made sure to only answer the questions related specifically to the features I worked on most. I encouraged my course mate to expand on his features, and this time, the conversation seemed better shared between all parties.
+
+Thankfully, very little actual persuasion was needed, as our evidence seemed to speak for itself. We were told that the next week would have us working with a different framework
