@@ -19,4 +19,4 @@ Fortunately, by the end of the meeting, everyone was in agreement. We would spen
 #### Day 2
 The time of the presentation approached. Despite the fairly extensive documentation we had prepared, the affair was a casual one. We worked our way down the table of required features and explained our implementation. As the senior developer asked us questions about our POCs, I made sure to only answer the questions related specifically to the features I worked on most. I encouraged my course mate to expand on his features, and this time, the conversation seemed better shared between all parties.
 
-Thankfully, very little actual persuasion was needed, as our evidence seemed to speak for itself. We were told that the next week would have us working with a different framework
+Thankfully, very little actual persuasion was needed, as our evidence seemed to speak for itself. We were told that the next week would have us working with a different framework.
