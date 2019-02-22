@@ -64,7 +64,7 @@ Address = 192.168.2.1/24
 ```
 
 * The `ListenPort` line states the port that Wireguard should listen for connections on.
-* The `PostUp` and `PostDown` lines provide commands that wireguard should run on starting and stopping. These lines add rules for routing all traffic received through the wg0 interface to the internet.
+* The `PostUp` and `PostDown` lines provide commands that Wireguard should run on starting and stopping. These lines add rules for routing all traffic received through the wg0 interface to the internet.
 * The `Address` line assigns the server an IP (192.168.2.1) in the virtual network we are creating.
 
 That's it for the server configuration. Now it's just time to start Wireguard using `wg-quick up wg0`. If you want to shut down Wireguard later, just run `wg-quick down wg0`.
@@ -77,7 +77,7 @@ To set up your client machine, install Wireguard as shown previously, then run t
 wg genkey | tee /path/to/new/privatekeyfile | wg pubkey > /path/to/new/publickeyfile
 ```
 
-Create a file `/etc/wireguard/wg0client.conf` with the folowing contents:
+Create a file `/etc/wireguard/wg0client.conf` with the following contents:
 ```
 [Interface]
 PrivateKey = <insert the client's private key>
@@ -95,11 +95,11 @@ Much of what we saw in the server config is replicated here, with a few exceptio
 * The `Endpoint` setting specifies the IP address/hostname of the server. This must be the internet-accessible, public address. This is not the virtual network address we set earlier in the server config.
 * The `AllowedIPs` setting uses the IPv4 wildcard to capture connection attempts to any IP address and route them through the Wireguard interface.
 
-The client is configured. Easy-peasy.
+The client is configured. Easy peasy.
 One more thing to do. Wireguard is a peer-to-peer VPN, so the "server" we created needs to know some info about the client too, namely, its public key and virtual network address. This is so that the server knows it should allow connections from your client, and so it knows how to encrypt data that your client wishes to receive through the VPN.
 
 ### Back to the Server!
-Stop the disconnect Wireguard if it's currently runnning with `wg-quick down wg0`. Edit the `/etc/wireguard/wg0.conf` file created earlier to include the following lines:
+Stop the disconnect Wireguard if it's currently running with `wg-quick down wg0`. Edit the `/etc/wireguard/wg0.conf` file created earlier to include the following lines:
 ```
 [Peer]
 PublicKey = <client's public key>
