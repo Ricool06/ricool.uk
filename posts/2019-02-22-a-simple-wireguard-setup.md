@@ -50,7 +50,7 @@ wlp3s0       wifi       unavailable  --
 lo           loopback   unmanaged    --
 ```
 
-If your server is connected to the internet through a wired connection, it will often be called something like `etho0` or `ens3` or `enps29u1u2` or something along those lines. If it is connected wirelessly,
+If your server is connected to the internet through a wired connection, it will often be called something like `etho0` or `ens3` or `enps29u1u2` or something along those lines.
 
 Create a file called `wg0.conf` in `/etc/wireguard/` and throw in the following, making sure to replace the placeholders with your specific info. _Note:_ the name of this config file is important, as Wireguard will create a network interface with the same name!
 
