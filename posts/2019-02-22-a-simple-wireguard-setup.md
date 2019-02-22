@@ -72,4 +72,46 @@ That's it for the server configuration. Now it's just time to start Wireguard us
 Now just copy the public key you generated earlier, ready for the next bit...
 
 ### The Client
+To set up your client machine, install Wireguard as shown previously, then run the command to generate a public and private key pair again:
+```
+wg genkey | tee /path/to/new/privatekeyfile | wg pubkey > /path/to/new/publickeyfile
+```
 
+Create a file `/etc/wireguard/wg0client.conf` with the folowing contents:
+```
+[Interface]
+PrivateKey = <insert the client's private key>
+Address = 192.168.2.2/24
+DNS = 8.8.8.8
+
+[Peer]
+PublicKey = <insert the server's public key>
+Endpoint = <insert the server's public address (not the one you set earlier)>:51820
+AllowedIPs = 0.0.0.0/0
+```
+
+Much of what we saw in the server config is replicated here, with a few exceptions:
+* The `DNS` setting ensures DNS works suing Google's DNS server. Not sure why but my client wouldn't work without it. Remove and see what happens for you if you're curious.
+* The `Endpoint` setting specifies the IP address/hostname of the server. This must be the internet-accessible, public address. This is not the virtual network address we set earlier in the server config.
+* The `AllowedIPs` setting uses the IPv4 wildcard to capture connection attempts to any IP address and route them through the Wireguard interface.
+
+The client is configured. Easy-peasy.
+One more thing to do. Wireguard is a peer-to-peer VPN, so the "server" we created needs to know some info about the client too, namely, its public key and virtual network address. This is so that the server knows it should allow connections from your client, and so it knows how to encrypt data that your client wishes to receive through the VPN.
+
+### Back to the Server!
+Stop the disconnect Wireguard if it's currently runnning with `wg-quick down wg0`. Edit the `/etc/wireguard/wg0.conf` file created earlier to include the following lines:
+```
+[Peer]
+PublicKey = <client's public key>
+AllowedIPs = 192.168.2.2/24
+```
+
+Reconnect Wireguard again with `wg-quick up wg0`.
+
+### Start the client
+Run `wg-quick up wg0client` then see if you can browse the web. If your configuration matches mine, barring any other issues, you should have a VPN. You should not be experiencing DNS leaks either, but you can always test it [here](www.dnsleak.com).
+
+### Review
+Wireguard is monumentally easier to set up. The need for the server to know about clients before connection is a bit inconvenient if you want to write some repeatable scripts using Ansible or Docker to set up a VPN, but I've seen some examples online that apparently don't need a premade `[Peers]` section in the server config so this is probably an artefact of creating all this the night before my train journey.
+
+Anyway, I hope this was a helpful post, and helps you stay safe on public WiFi networks.
