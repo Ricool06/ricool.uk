@@ -109,7 +109,7 @@ AllowedIPs = 192.168.2.2/24
 Reconnect Wireguard again with `wg-quick up wg0`.
 
 ### Start the client
-Run `wg-quick up wg0client` then see if you can browse the web. If your configuration matches mine, barring any other issues, you should have a VPN. You should not be experiencing DNS leaks either, but you can always test it [here](www.dnsleak.com).
+Run `wg-quick up wg0client` then see if you can browse the web. If your configuration matches mine, barring any other issues, you should have a VPN. You should not be experiencing DNS leaks either, but you can always test it [here](https://www.dnsleaktest.com/).
 
 ### Review
 Wireguard is monumentally easier to set up. The need for the server to know about clients before connection is a bit inconvenient if you want to write some repeatable scripts using Ansible or Docker to set up a VPN, but I've seen some examples online that apparently don't need a premade `[Peers]` section in the server config so this is probably an artefact of creating all this the night before my train journey.
