@@ -11,7 +11,7 @@ export default function IndexPage({ data: { allMarkdownRemark: { edges } } }) {
 
   return (
     <Layout>
-      <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+      <SEO title="Home" keywords={['Ricool', 'Ricool06', 'UK', 'developer', 'blog', 'gatsby']} />
       <div>{PostLinks}</div>
     </Layout>
   );
