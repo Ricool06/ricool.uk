@@ -1,6 +1,7 @@
+import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import SocialLinks from './social-links';
 
 const Header = ({ siteTitle }) => (
   <div
@@ -14,9 +15,15 @@ const Header = ({ siteTitle }) => (
         margin: '0 auto',
         maxWidth: 960,
         padding: '1.45rem 1.0875rem',
+        display: 'flex',
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1
+        style={{
+          margin: 0,
+          flex: '1 1 auto',
+        }}
+      >
         <Link
           to="/"
           style={{
@@ -27,6 +34,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <SocialLinks />
     </div>
   </div>
 );

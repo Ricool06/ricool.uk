@@ -8,7 +8,7 @@ import Image, { PureImage } from '../../src/components/image';
 describe('Image', () => {
   const filePath = 'liontraceroar.png';
   const data = {
-    placeholderImage: {
+    image: {
       childImageSharp: {
         fluid: {
           src: filePath,
@@ -30,7 +30,7 @@ describe('Image', () => {
   it('should match the snapshot', () => {
     StaticQuery.mockImplementation(({ render: mockRender }) => mockRender(data));
 
-    const jsonSnapshot = renderer.create(<Image data={data} />).toJSON();
+    const jsonSnapshot = renderer.create(<Image filePath={filePath} />).toJSON();
     expect(jsonSnapshot).toMatchSnapshot();
   });
 });

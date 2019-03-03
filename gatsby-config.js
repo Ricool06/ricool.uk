@@ -37,6 +37,13 @@ module.exports = {
     },
     'gatsby-transformer-remark',
     'gatsby-plugin-styled-components',
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: './src/data/',
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

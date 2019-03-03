@@ -4,6 +4,8 @@ import { StaticQuery } from 'gatsby';
 import renderer from 'react-test-renderer';
 import IndexPage from '../../src/pages/index';
 
+jest.mock('../../src/components/social-links.jsx', () => 'div');
+
 describe('IndexPage', () => {
   const staticQueryData = {
     site: {
