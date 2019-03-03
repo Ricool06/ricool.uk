@@ -4,6 +4,8 @@ import renderer from 'react-test-renderer';
 import { StaticQuery } from 'gatsby';
 import PurePostTemplate from '../../src/templates/post-template';
 
+jest.mock('../../src/components/social-links.jsx', () => 'div');
+
 describe('PostTemplate', () => {
   const staticQueryData = {
     site: {

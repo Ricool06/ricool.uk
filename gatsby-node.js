@@ -6,6 +6,8 @@
 
 // You can delete this file if you're not using it
 const path = require('path');
+const uuidv4 = require('uuid/v4');
+const crypto = require('crypto');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -40,4 +42,28 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
   });
+};
+
+const socialImageLinks = {
+  'github.png': 'https://github.com/Ricool06',
+  'twitter.png': 'https://twitter.com/Ricool06',
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  if (node.sourceInstanceName === 'images' && node.internal.type === 'File' && socialImageLinks[node.relativePath]) {
+    const { createNode } = actions;
+
+    createNode({
+      id: uuidv4(),
+      url: socialImageLinks[node.relativePath],
+      file___NODE: node.id,
+      internal: {
+        type: 'socialJson',
+        contentDigest: crypto
+          .createHash('md5')
+          .update(socialImageLinks[node.relativePath])
+          .digest('hex'),
+      },
+    });
+  }
 };
