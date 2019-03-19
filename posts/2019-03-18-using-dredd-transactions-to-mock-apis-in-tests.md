@@ -79,4 +79,4 @@ The Swagger JSON can also be imported into unit tests for sample data too, with 
 ### Conclusion
 I've found this method works quite well so far, and I can be sure that if OpenAQ's API ever changes, I can simply change the blueprint and fix any failing tests. More importantly, when I come to include my own backend services, I can facilitate the consumer-driven-contracts pattern for testing the frontend by automatically mocking my backend service. Any tests between multiple backend services can simply run dredd the traditional way, giving me confidence that all of the services in my system work together without _necessarily_ needing a full suite of system tests.
 
-I'm still learning, so there might be 
+I'm still learning, so there might be a glaring issue with this approach that I'm not yet aware of. If so, feel free to contact me on [Twitter](https://twitter.com/Ricool06)!
