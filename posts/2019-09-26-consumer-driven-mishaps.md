@@ -12,16 +12,16 @@ The idea is to ensure that services will integrate well with each other without 
 As you may have gleaned from the earth-shatteringly witty title, this isn't about that happy scenario. This post is about my misuse of CDCs and some lessons learned.
 
 ## The Motivation
-My team are currently working on a product that takes events filled with delicious, juicy __data__ from an in-house system, transforms them into a format that a 3rd-party system can handle, and throws them at a REST API that the 3rd-party system exposes.
+My team are currently working on a product that takes events filled with delicious, juicy __data__ from an in-house system, transforms them into a format that a third party system can handle, and throws them at a REST API that the third party system exposes.
 
-The problem was, we had to wait until deployment to find out if we had made a mistake in implementing the consumer for the 3rd-party system. Although we were deploying to a staging environment so we weren't causing downtime for users, this development cycle still meant that we were dirtying our master branch with commits that weren't working. It would also slow down _everyone's progress_ in the team to a crawl. But we couldn't just run tests locally against the 3rd-party API, as we would be bombarding it with requests and dealing with constantly changing data!
+The problem was, we had to wait until deployment to find out if we had made a mistake in implementing the consumer for the third party system. Although we were deploying to a staging environment so we weren't causing downtime for users, this development cycle still meant that we were dirtying our master branch with commits that weren't working. It would also slow down _everyone's progress_ in the team to a crawl. But we couldn't just run tests locally against the third party API, as we would be bombarding it with requests and dealing with constantly changing data!
 
 So the question became, how do we test our consuming service against the real provider API... without actually testing it against the real provider API?
 
 ![Pardon?](./blog-images/confused-nick-young.jpg)
 
 ## Consumer-Driven Contracts to the rescue!
-We all settled on Consumer-Driven Contract testing, [PACT](https://github.com/pact-foundation/pact-net) to be specific. I had used the Node.js version of PACT [before](https://github.com/Ricool06/breathe), so I thought we were well placed to begin using it for our situation. We went on to create an API client that we tested with a PACT mock, verified the pact artifact against the real provider API, then used a [stub generator](https://github.com/uglyog/pact-stub-server) to stub the provider in integration tests for the consumer service which used the client. This worked great! Until it didn't...
+We all settled on Consumer-Driven Contract testing, [PACT](https://github.com/pact-foundation/pact-net) to be specific. I had used the Node.js version of PACT [before](https://github.com/Ricool06/breathe), so I thought we were well placed to begin using it for our situation. We went on to create an API client that we tested with a PACT mock, verified the pact artefact against the real provider API, then used a [stub generator](https://github.com/uglyog/pact-stub-server) to stub the provider in integration tests for the consumer service which used the client. This worked great! Until it didn't...
 
 ## The Problems & _Lessons Learned_ ™
 First off, I want to make it clear that the problem with PACT was _the way we were using it_. The folks over at the [PACT foundation](https://github.com/pact-foundation) make a stellar tool, so be sure to show them some love this coming [Hacktoberfest](https://hacktoberfest.digitalocean.com/).
@@ -58,7 +58,7 @@ Once we ran the tests and WireMock.Net saved the interactions to disk, we simply
 This approach had the advantage of being able to use test data that __definitely__ matched the contract of the provider, because it was made by the provider. Furthermore, updating the contract was as easy as deleting the files recorded by WireMock.Net and running the tests again. We also noticed that tests could be written with far fewer lines of code, as the test data was fetched automatically, without having to describe whether fields match a certain type or regular expression.
 
 ## What Consumer-Driven Contracts are good for:
-Embarassingly, the clue is in the name, and we should have understood that sooner. Consumer-__Driven__ Contracts. This microservice testing pattern is useful when developers in the same (or two closely-working) teams need to develop a number of integrated services. One developer can use a CDC framework to write tests for their consumer, essentially describing _their requirements_ for the provider service.
+Embarrassingly, the clue is in the name, and we should have understood that sooner. Consumer-__Driven__ Contracts. This microservice testing pattern is useful when developers in the same (or two closely-working) teams need to develop a number of integrated services. One developer can use a CDC framework to write tests for their consumer, essentially describing _their requirements_ for the provider service.
 
 The generated contract can be passed to the developer of the provider so that they can implement the service _according to the requirements of the contract_.
 
