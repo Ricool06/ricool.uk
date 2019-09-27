@@ -5,7 +5,7 @@ title: "Consumer-Driven Mishaps"
 ---
 If you haven't already guessed by the title, this post is about [Consumer](https://www.thoughtworks.com/radar/techniques/consumer-driven-contract-testing)-[Driven](https://thoughtworks.github.io/pacto/patterns/cdc/) [Contract](https://martinfowler.com/articles/consumerDrivenContracts.html) testing. It's a microservice testing pattern for testing services in isolation from each other. The basic idea is that a _consumer_ service is tested against a mock of its _provider_. The mock builds a list of _interactions_ it has with the consumer, which form expectations about what the real provider service should do (and what the shape of its data looks like). These interactions are usually serialized into a file and can be replayed against the provider in its own test environment.
 
-diurgrarm
+![Consumer Driven Contracts Diagram](./blog-images/consumer-driven-contracts.png)
 
 The idea is to ensure that services will integrate well with each other without necessarily needing to deploy an entire staging environment and perform end-to-end tests to do so.
 
@@ -18,7 +18,7 @@ The problem was, we had to wait until deployment to find out if we had made a mi
 
 So the question became, how do we test our consuming service against the real provider API... without actually testing it against the real provider API?
 
-confusedmememeeme
+![Pardon?](./blog-images/confused-nick-young.jpg)
 
 ## Consumer-Driven Contracts to the rescue!
 We all settled on Consumer-Driven Contract testing, [PACT](https://github.com/pact-foundation/pact-net) to be specific. I had used the Node.js version of PACT [before](https://github.com/Ricool06/breathe), so I thought we were well placed to begin using it for our situation. We went on to create an API client that we tested with a PACT mock, verified the pact artifact against the real provider API, then used a [stub generator](https://github.com/uglyog/pact-stub-server) to stub the provider in integration tests for the consumer service which used the client. This worked great! Until it didn't...
