@@ -28,7 +28,7 @@ PurePostTemplate.propTypes = {
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
-        html: PropTypes.string.isRequired,
+        html: PropTypes.string,
       }).isRequired,
     }).isRequired,
   }).isRequired,
